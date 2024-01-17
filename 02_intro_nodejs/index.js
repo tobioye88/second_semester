@@ -12,13 +12,13 @@ const os = require("os");
 const server = http.createServer((req, res) => {
   // console.log(req.headers);
   // console.log(process.env.NODE_ENV);
-  // console.log(os.platform());
+  console.log(process.version);
   console.log(req.url);
   console.log(req.method);
   if (req.url === "/") {
     res.write("Hello world!");
     res.end();
-  } else if (req.url === "/hello") {
+  } else if (req.url === "/hello" && req.method === "POST") {
     res.write("Hello altschoolers!");
     res.end();
   } else if (req.url === "/read") {

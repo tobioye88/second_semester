@@ -1,0 +1,13 @@
+// Servers
+1. Application Servers
+2. Web server
+3. proxy severs
+4. Database Servers
+5. DNS server
+
+->
+  Web Server ->
+              Application Server
+            <-
+  Web sever
+<-
