@@ -1,0 +1,11 @@
+## Terminal
+cd - change directory / folder
+cd ../path - change directory to the parent folder
+mkdir - make directory
+node filename.js - execute a javascript file
+touch filename - creates a new file
+ls - list files in a directory
+pwd - present working directory
+clear / cls - clear screen
+
+## Javascript
