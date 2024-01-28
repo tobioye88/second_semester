@@ -60,8 +60,13 @@ const server = http.createServer(async (req, res) => {
     if (req.url === "/books") {
       authenticate(req, res, getBooks);
     }
-    if (req.url === "/authors") {
+    else if (req.url === "/authors") {
       authenticate(req, res, getAuthors);
+    }
+    else {
+      res.statusCode = 404;
+      res.setHeader("Content-Type", "application/json");
+      res.end(JSON.stringify({ error : "Invalid Route" }));
     }
   } catch (error) {
     res.statusCode = 500;
