@@ -26,7 +26,7 @@ function getBodyFromStream(req) {
 function authenticate(req, res, next) {
   const { username, password } = req.body;
   console.log("authenticate", req.body);
-  const user = findUser(req.body.username);
+  const user = findUser(username);
   if (!user) {
     res.statusCode = 401;
     res.end();
