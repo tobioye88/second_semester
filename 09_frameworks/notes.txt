@@ -1,0 +1,20 @@
+Routes & Router 
+  - /books 
+  - /books/:id 
+  - /books/:booksId/authors/:authorId <- Path params
+  - /books?page=1&limit=10 <- Query Params
+
+Middleware - global level - route level - function level
+
+** Data
+* Headers
+* Methods - GET, POST, PUT, PATCH, DELETE - OPTIONS
+* Body
+* Query Params
+* Path Params /books/:id
+
+MVCS
+Controllers
+Service
+
+Serving Static files
