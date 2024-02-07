@@ -1,3 +1,12 @@
 index.js -> routes[] -> controllers[] -> services
 index.js -> routes[] -> controllers[] -> services -> repositories
 index.js -> routes[] -> controllers[] -> services -> DB
+
+
+Paths must not be identical if you hve a dynamic route
+GET /books/:id
+GET /books/share
+
+The proper order should be
+GET /books/share
+GET /books/:id
