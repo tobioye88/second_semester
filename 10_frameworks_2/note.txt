@@ -1,0 +1,3 @@
+index.js -> routes[] -> controllers[] -> services
+index.js -> routes[] -> controllers[] -> services -> repositories
+index.js -> routes[] -> controllers[] -> services -> DB
