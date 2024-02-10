@@ -33,7 +33,25 @@ const getSomething = (page, limit) => {
   };
 };
 
+const getBookById = (booksId) => {
+  return { id: booksId, name: "Harry potter", pages: 760 };
+};
+
+const getBookByIdAndAuthorId = (booksId, authorId) => {
+  return {
+    id: booksId,
+    name: "Harry potter",
+    pages: 760,
+    author: {
+      id: authorId,
+      name: "J.K. Rowling",
+    },
+  };
+};
+
 module.exports = {
   getBooks,
   getSomething,
+  getBookById,
+  getBookByIdAndAuthorId,
 };

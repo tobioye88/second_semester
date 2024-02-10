@@ -14,27 +14,16 @@ const lastLayerMiddleware = (req, res, next) => {
   next();
 };
 
-router.get("/", lastLayerMiddleware, (req, res) => {
-  booksController.getBooksController(req, res);
-});
+router.get("/", lastLayerMiddleware, booksController.getBooks);
+router.get("/something", booksController.getSomething);
+router.get("/:booksId", booksController.getBookById);
+router.get(
+  "/:booksId/authors/:authorId",
+  booksController.getBookByIdAndAuthorId
+);
 
-router.get("/something", (req, res) => {
-  booksController.getSomethingController(req, res);
-});
-
-router.get("/:booksId", (req, res) => {
-  console.log(req.params);
-  res.json({ name: "Harry potter", pages: 760 });
-});
-
-router.get("/:booksId/authors/:authorId", (req, res) => {
-  console.log(req.params);
-  console.log(req.query);
-  res.json({ name: "Harry potter", pages: 760 });
-});
-
-router.post("/", (req, res) => {
-  res.json({ message: "Book created", books: req.body });
-});
+// router.post("/", (req, res) => {
+//   res.json({ message: "Book created", books: req.body });
+// });
 
 module.exports = router;
