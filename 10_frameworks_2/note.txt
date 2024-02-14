@@ -73,3 +73,5 @@ Delete. DELETE
  - DELETE FROM users WHERE id = 3;
 
 
+https://dev.mysql.com/downloads/file/?id=525971
+https://www.mongodb.com/try/download/community-kubernetes-operator
