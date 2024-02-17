@@ -47,7 +47,7 @@ const User = sequelize.define("users", {
   },
 });
 
-app.get("/", async (req, res) => {
+app.get(["/", "/home"], async (req, res) => {
   const users = await User.findAll();
   res.json(users);
 });
