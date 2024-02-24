@@ -21,18 +21,30 @@ async function connectToDB() {
 async function doDBStuff(connection) {
   const altSchoolDB = connection.db("alt_school");
   const users = altSchoolDB.collection("users");
-  await users.insertOne({ name: "John" });
-  await users.insertOne({ name: "John", age: 25 });
-  await users.insertOne({ name: "John", age: 25, email: "johnDoe@email.com" });
+  await users.insertMany([
+    { name: "John" },
+    { name: "John", age: 25 },
+    { name: "John", age: 25, email: "john@email" },
+  ]);
+  // await users.insertOne({ name: "John" });
+  // await users.insertOne({ name: "John", age: 25 });
+  // await users.insertOne({ name: "John", age: 25, email: "johnDoe@email.com" });
 }
 
 app.get("/user", async (req, res) => {
+  await doDBStuff(connection);
   const user = await users.findOne({ name: "John" });
   res.json(user);
 });
 
-app.listen(PORT, async () => {
-  connection = await connectToDB();
-  await doDBStuff(connection); //
-  console.log(`Server is running on port ${PORT}`);
+connectToDB().then((connection) => {
+  connection = connection;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
 });
+// app.listen(PORT, () => {
+//   // connection = await connectToDB();
+//   // await doDBStuff(connection); //
+//   console.log(`Server is running on port ${PORT}`);
+// });
