@@ -1,0 +1,21 @@
+// User can own a wallet
+// A user can transfer to another user wallet
+
+// User
+// name
+// email
+// createdAt
+
+// Wallet
+// user
+// balance
+// - Transfer Wallet -> Wallet
+// createdAt
+
+// Transactions
+// wallet
+// type - CREDIT / DEBIT
+// amount
+// balance before
+// balance after
+// createdAt
