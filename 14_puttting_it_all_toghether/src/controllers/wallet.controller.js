@@ -7,8 +7,12 @@ export const getAll = async (req, res) => {
 
 export const create = async (req, res) => {
   const { userId } = req.body;
-  const wallet = await walletService.create(userId);
-  res.json(wallet);
+  try {
+    const wallet = await walletService.create(userId);
+    res.json(wallet);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
 export const getOne = async (req, res) => {

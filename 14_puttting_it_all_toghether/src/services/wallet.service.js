@@ -1,11 +1,25 @@
+import User from "../database/schema/user.schema.js";
 import Wallet from "../database/schema/wallet.schema.js";
-import { Types } from "mongoose";
+import { Types, isValidObjectId } from "mongoose";
 
 export const getAll = async () => {
   return Wallet.find().populate("user");
 };
 
 export const create = async (userId) => {
+  if (!isValidObjectId(userId)) {
+    throw new Error("Invalid user id");
+  }
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new Error("User not found");
+  }
+  const existingWallet = await Wallet.findOne({
+    user: new Types.ObjectId(userId),
+  });
+  if (existingWallet) {
+    throw new Error("Wallet already exists");
+  }
   return Wallet.create({ user: new Types.ObjectId(userId) });
 };
 
