@@ -1,0 +1,98 @@
+2024-04-06
+## Binary Search
+[X,X,X,X,X,X,X,X,X]
+[4,5,3,7,9,6,1,0,2]
+
+// 0(n) -> linear time
+function linearSearch(needle, array) {
+  for (let i of array){
+    if(i == needle) {
+      return true;
+    }
+  }
+  return false;
+}
+n = 7
+[1,2,3,4, 5,6,7,9,0]
+
+[1,2,3,4, 5, 6,7,9,0]
+
+[1,2,3,4, 5, 6,7, 9,0]
+
+
+CREATE TABLE user (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  role VARCHAR(30) NOT NULL,
+);
+ALTER TABLE user ADD INDEX (role); // <- index
+
+//// FOR MONGODB
+db.collection.createIndex( { role : -1 }, function(err, result) {
+   console.log(result);
+   callback(result);
+})
+
+//// FOR NONGODB USING MONGOOSE
+const userSchema = {
+  name: {
+    type: String,
+    trim: true,
+  },
+  email: {
+    type: String,
+    trim: true,
+    unique: true,
+  },
+  role: {
+    type: String,
+    trim: true,
+    index: true   
+  },
+}
+
+Index =>
+Index types, PRIMARY, UNIQUE, COMPOSITE INDEX, ...
+
+# Migration and Seed.
+## MIGRATIONS
+Migration help keep our database in sync with our app.
+They manual or automated
+
+## Seed
+Is data planted into the DB at least once in the life time of the application
+
+## ACID
+### A Atomicity - a single unit of a transaction either succeeds of fails
+### C Consistency - changes made within a transaction are consistent with the db constraint.
+### I Isolation - all transactions should run in an isolated env and not interfere with each other.
+### D Durability - all transactions once complete and changes are written are persisted no matter what.
+
+
+// Assuming we have a Mongoose model for 'User'
+const User = require('./models/User');
+
+// Define some seed data
+const seedUsers = [
+  { name: 'John Doe', email: 'john@example.com', role: 'admin' },
+  { name: 'Jane Doe', email: 'jane@example.com', role: 'user' },
+  // Add more users as needed
+];
+
+// Function to seed the data
+async function seedDatabase() {
+  try {
+    // Remove all existing users
+    await User.deleteMany({});
+    // Add the seed users
+    await User.insertMany(seedUsers);
+    console.log('Database seeding completed!');
+  } catch (error) {
+    console.error('Error seeding database: ', error);
+  }
+}
+
+// Call the function
+seedDatabase();
+
