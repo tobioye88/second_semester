@@ -2,7 +2,7 @@ export const generateMiddleWare = (schema) => {
   return (req, res, next) => {
     // Middleware logic
     if (schema) {
-      const result = schema.validate(req.body, (err, value) => {});
+      const result = schema.validate(req.body);
       console.log("here", result);
       if (result.error) {
         return res

@@ -9,7 +9,7 @@ export const login = async (email, password) => {
   if (!user) {
     throw new ErrorWithStatus("User not found", 404);
   }
-  // Check if password is correct
+  // Check if password is not correct
   if (!bcrypt.compareSync(password, user.password)) {
     throw new ErrorWithStatus("Username or Password is incorrect", 401);
   }
@@ -18,22 +18,19 @@ export const login = async (email, password) => {
   const JWT_SECRET = process.env.JWT_SECRET || "secret";
   const token = Jwt.sign(
     {
+      role: user.role || "USER",
       email: user.email,
+      _id: user._id,
       sub: user._id,
     },
     JWT_SECRET,
     { expiresIn: "1h" }
   );
 
-  return {
-    message: "Login successful",
-    data: {
-      accessToken: token,
-    },
-  };
+  return token;
 };
 
-export const register = async (name, email, password) => {
+export const register = async (name, email, password, role) => {
   // Check if email exists
   const user = await User.findOne({ email });
   if (user) {
@@ -45,14 +42,10 @@ export const register = async (name, email, password) => {
     name,
     email,
     password,
+    role,
   });
   await newUser.save();
 
   delete newUser.password;
-  return {
-    message: "User created successfully",
-    data: {
-      user: newUser,
-    },
-  };
+  return newUser;
 };

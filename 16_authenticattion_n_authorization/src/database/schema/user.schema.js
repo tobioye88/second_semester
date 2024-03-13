@@ -11,11 +11,17 @@ const userSchema = mongoose.Schema({
     type: String,
     unique: true,
     required: true,
+    lowercase: true,
   },
   password: {
     type: String,
     required: true,
     trim: true,
+  },
+  role: {
+    type: String,
+    enum: ["USER", "ADMIN"],
+    default: "USER",
   },
   // createdAt, updatedAt
 });

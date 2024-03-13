@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.route.js";
+import userRoute from "./routes/users.route.js";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // Routes
 app.use("/auth", authRoute);
+app.use("/users", userRoute);
 
 // catch all route
 app.all("*", (req, res) => {

@@ -12,12 +12,10 @@ const walletSchema = mongoose.Schema({
     default: 0,
     required: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
 // Model
-const Wallet = mongoose.model("Wallet", walletSchema);
+const Wallet = mongoose.model("Wallet", walletSchema, {
+  timestamps: true,
+});
 export default Wallet;
