@@ -1,0 +1,19 @@
+const baseUrl = 'https://staging.myapp.com'
+const baseUrl = 'https://myapp.com'
+
+Home Page
+- GET {{baseUrl}}/products
+- GET {{baseUrl}}/testimonials
+
+Contact Page
+- POST {{baseUrl}}/contacts
+
+Wallet Page
+- GET {{baseUrl}}/accounts/balance
+- GET {{baseUrl}}/accounts/daily-limit
+- GET {{baseUrl}}/transfer/recent
+- GET {{baseUrl}}/banks?country=ng
+- GET {{baseUrl}}/beneficiaries
+- POST {{baseUrl}}/validate/account-number
+- POST {{baseUrl}}/transfer
+

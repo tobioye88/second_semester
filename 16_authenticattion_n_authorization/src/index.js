@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.route.js";
 import userRoute from "./routes/users.route.js";
+import { authMiddleware } from "./middleware/auth.middleware.js";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Routes
 app.use("/auth", authRoute);
+app.use(authMiddleware);
 app.use("/users", userRoute);
 
 // catch all route

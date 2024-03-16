@@ -8,6 +8,7 @@ export const login = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user) {
     throw new ErrorWithStatus("User not found", 404);
+    // throw { message: "User not found", status: 404 }; -- Don't use this
   }
   // Check if password is not correct
   if (!bcrypt.compareSync(password, user.password)) {
@@ -24,7 +25,7 @@ export const login = async (email, password) => {
       sub: user._id,
     },
     JWT_SECRET,
-    { expiresIn: "1h" }
+    { expiresIn: "5m" }
   );
 
   return token;
