@@ -18,7 +18,7 @@ Create a web app that hast the following features
 > Success Response { 
     message: 'Any success message you like', 
     data: { 
-      _id: 'string|number',
+      id: 'string',
       name: 'string',
       email: 'string',
       -password: 'do not include passwords',
@@ -39,7 +39,7 @@ Create a web app that hast the following features
     data: { 
       accessToken: 'eeee.eeee.eeee',
       user: {
-        _id: 'string|number',
+        id: 'string',
         name: 'string',
         email: 'string',
         -password: 'do not include passwords',
@@ -65,11 +65,11 @@ Create a web app that hast the following features
 > Success Response { 
     message: 'Post created', 
     data: { 
-      _id: string,
+      id: string,
       title: 'string',
       body: 'string',
       user: { 
-        _id: 'string|number',
+        id: 'string',
         name: 'string',
         email: 'string',
         updatedAt: {{date}},
@@ -92,11 +92,11 @@ Create a web app that hast the following features
 > Success Response { 
     message: 'Post updated successfully', 
     data: { 
-      _id: string,
+      id: string,
       title: 'string',
       body: 'string',
       user: { 
-        _id: 'string|number',
+        id: 'string',
         name: 'string',
         email: 'string',
         updatedAt: {{date}},
@@ -122,11 +122,11 @@ Create a web app that hast the following features
     message: 'All posts', 
     data: [
       { 
-        _id: string,
+        id: string,
         title: 'string',
         body: 'string',
         user: { 
-          _id: 'string|number',
+          id: 'string',
           name: 'string',
           email: 'string',
           updatedAt: {{date}},
@@ -136,11 +136,11 @@ Create a web app that hast the following features
         createdAt: {{date}}
       },
       { 
-        _id: string,
+        id: string,
         title: 'string',
         body: 'string',
         user: { 
-          _id: 'string|number',
+          id: 'string',
           name: 'string',
           email: 'string',
           updatedAt: {{date}},
@@ -164,11 +164,11 @@ Create a web app that hast the following features
 > Success Response {
     message: 'Post', 
     data: { 
-      _id: string,
+      id: string,
       title: 'string',
       body: 'string',
       user: { 
-        _id: 'string|number',
+        id: 'string',
         name: 'string',
         email: 'string',
         updatedAt: {{date}},
@@ -192,11 +192,11 @@ Create a web app that hast the following features
 > Success Response { 
     message: 'All posts', 
     data: { 
-      _id: string,
+      id: string,
       title: 'string',
       body: 'string',
       user: { 
-        _id: 'string|number',
+        id: 'string',
         name: 'string',
         email: 'string',
       },

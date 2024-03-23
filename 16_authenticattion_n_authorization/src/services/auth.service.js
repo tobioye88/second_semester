@@ -25,7 +25,7 @@ export const login = async (email, password) => {
       sub: user._id,
     },
     JWT_SECRET,
-    { expiresIn: "5m" }
+    { expiresIn: "10m" }
   );
 
   return token;
