@@ -17,3 +17,49 @@ Wallet Page
 - POST {{baseUrl}}/validate/account-number
 - POST {{baseUrl}}/transfer
 
+
+
+
+Beans Time
+Set up repos
+1. Create a repo eg. Brain waves - Nodejs
+2. Frontend team - Create their own repo 
+3. Any other team can create their own repo
+
+
+Create a main repo
+ - Create sub repos for each team
+ - Frontend
+ - Backend: Nodejs
+ - Backend: Python
+ - Backend: Golang
+
+
+Branch Structure
+main
+ - development
+
+--> Main --> Checkout -> Feature Branch (name of feature) -> PR/MR -> development
+                                                          -> PR/MR -> main
+
+Checkout from main,
+feat-booking
+Build and code and test locally
+PR/MR to development
+PR/MR to main
+
+
+
+===================== Note To fix the test issue =====================
+To use es6 with jest
+1. make sure that you have "type": "module", in your package.json
+2. create .babelrc file
+3. add the line below to it
+  { "presets": ["@babel/preset-env"] }
+4. add to package.json the line below
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  }
+5. that should be all.

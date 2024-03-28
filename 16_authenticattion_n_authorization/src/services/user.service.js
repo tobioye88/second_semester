@@ -20,6 +20,7 @@ export const getAllUsers = async (page = 1, limit = 10, query = null) => {
     const total = await User.countDocuments(filter);
     return { data: users, meta: { page, limit, total } };
   } catch (error) {
+    console.log(error);
     throw new ErrorWithStatus(error.message, 500);
   }
 };
