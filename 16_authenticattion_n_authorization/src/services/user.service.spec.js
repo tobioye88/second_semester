@@ -28,13 +28,10 @@ describe("Service: User Service", function () {
         role: "USER",
       },
     ];
-    User.find = jest
-      .fn()
-      // .mockImplementation({ skip: () => ({ limit: () => users }) }); <- this did not work
-      .mockReturnValue({
-        skip: jest.fn().mockReturnThis(),
-        limit: jest.fn().mockReturnValue(mockUsers),
-      });
+    User.find = jest.fn().mockReturnValue({
+      skip: jest.fn().mockReturnThis(),
+      limit: jest.fn().mockReturnValue(mockUsers),
+    });
     // this style below also works
     // jest.spyOn(User, "find").mockReturnValue({
     //   skip: jest.fn().mockReturnThis(),
@@ -50,5 +47,29 @@ describe("Service: User Service", function () {
     expect(result.meta.total).toEqual(mockUsers.length);
     expect(User.find).toHaveBeenCalledTimes(1);
     expect(User.countDocuments).toHaveBeenCalledTimes(1);
+  });
+
+  it("should throw an error when failed to get all users", async () => {
+    // Given
+    User.find = jest.fn().mockReturnValue({
+      skip: jest.fn().mockReturnThis(),
+      limit: jest.fn().mockRejectedValue(new Error("Failed to get users")),
+    });
+
+    // // When
+    // try {
+    //   await UserService.getAllUsers();
+    //   // expect(true).toBe(false);
+    // } catch (error) {
+    //   console.log("error", error);
+    //   //   // Then
+    //   expect(error.message).toEqual("Failed to get users");
+    //   //   expect(error.status).toEqual(500);
+    //   //   expect(User.find).toHaveBeenCalledTimes(1);
+    // }
+
+    await expect(UserService.getAllUsers()).rejects.toThrow(
+      "Failed to get users"
+    );
   });
 });

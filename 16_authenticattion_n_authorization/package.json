@@ -2,11 +2,12 @@
   "name": "16_authentication_n_authorization",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "e2e": "jest e2e.spec.js --testTimeout=40000 --detectOpenHandles --forceExit --runInBand --verbose"
   },
   "keywords": [],
   "author": "",
@@ -24,7 +25,8 @@
     "@babel/core": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
     "babel-jest": "^29.7.0",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
   },
   "jest": {
     "transform": {
